@@ -24,3 +24,8 @@ O Projeto Planeta Fauna visa criar uma plataforma que forneça informações det
 - Os usuários podem visualizar as espécies associadas a um determinado subfilo.
 - Cada espécie é exibida com informações detalhadas, como nome científico, habitat, comportamento, etc.
 
+### Pesquisar
+- Os usuários podem pesquisar por um reino, filo, subfilo ou espécie específicos.
+- A pesquisa é realizada em tempo real à medida que o usuário digita, sugerindo resultados correspondentes.
+- Ao selecionar um item da lista de resultados da pesquisa, o usuário é redirecionado para a página de detalhes desse item.
+- Se nenhum resultado correspondente for encontrado, uma mensagem informando que nenhum resultado foi encontrado é exibida ao usuário.
