@@ -1,3 +1,5 @@
+## PLANETA FAUNA
+
 Bem-vindo ao protótipo 1.0 do Projeto Planeta Fauna! Este protótipo apresenta uma aplicação inicial que permite explorar diferentes reinos da vida animal, visualizando filos, subfilos e espécies associadas.
 
 ## Escopo do Projeto
