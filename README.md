@@ -22,6 +22,3 @@ O Projeto Planeta Fauna visa criar uma plataforma que forneça informações det
 - Os usuários podem visualizar as espécies associadas a um determinado subfilo.
 - Cada espécie é exibida com informações detalhadas, como nome científico, habitat, comportamento, etc.
 
-## Utilização do Protótipo
-
-Para executar o protótipo 1.0 do Projeto Planeta Fauna em sua máquina local, siga estas etapas:
