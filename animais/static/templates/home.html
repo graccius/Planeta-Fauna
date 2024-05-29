@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 
-{% block title %}Lista de Reinos{% endblock %}
+{% block title %}Página Inicial{% endblock %}
 
 {% block content %}
-<h1>Escolha um Reino</h1>
+<h1>Bem-vindo ao Planeta Fauna</h1>
+<form method="get" action="{% url 'search' %}">
+    <input type="text" name="q" placeholder="Procure por reino, filo, subfilo ou espécie">
+    <button type="submit">Pesquisar</button>
+</form>
+<h2>Escolha um Reino</h2>
 <div class="reinos-lista">
     {% for reino in reinos %}
         <div class="reino-container">

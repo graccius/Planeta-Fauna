@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Filos do Reino {{ reino.nome }}</title>
-</head>
-<body>
-    <h1>Lista de Filos do Reino {{ reino.nome }}</h1>
-    <ul>
-        {% for filo in filos %}
-            <li>
-                <a href="{% url 'lista_subfilos' filo.id %}">{{ filo.nome }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Lista de Filos do Reino {{ reino.nome }}{% endblock %}
+
+{% block content %}
+<h1>Lista de Filos do Reino {{ reino.nome }}</h1>
+<ul>
+    {% for filo in filos %}
+        <li>
+            <a href="{% url 'lista_subfilos' id_filo=filo.id %}">{{ filo.nome }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
