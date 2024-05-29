@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Reinos</title>
+    <!-- Carregue a tag 'static' -->
+    {% load static %}
+    <!-- Inclua o CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Escolha um Reino</h1>
+    <div class="reinos-lista">
+        {% for reino in reinos %}
+            <div class="reino-container">
+                <a href="{% url 'lista_filos' id_reino=reino.id %}" class="nome-reino">{{ reino.nome }}</a>
+                <a href="{% url 'lista_filos' id_reino=reino.id %}">
+                    <img src="{{ reino.imagem.url }}" alt="{{ reino.nome }}">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
