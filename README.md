@@ -1,1 +1,27 @@
-"Bem-vindo ao prot¢tipo 1.0 do Projeto Planeta Fauna! Este prot¢tipo apresenta uma aplicaá∆o inicial que permite explorar diferentes reinos da vida animal, visualizando filos, subfilos e espÇcies associadas.## Escopo do ProjetoO Projeto Planeta Fauna visa criar uma plataforma que forneáa informaá‰es detalhadas sobre as diversas formas de vida em nosso planeta, organizadas em uma hierarquia taxonìmica. O objetivo final Ç criar uma ferramenta educacional e de pesquisa para estudantes, cientistas e entusiastas da vida selvagem.## Casos de Uso### Explorar Reinos- Os usu†rios podem selecionar um reino da lista de reinos dispon°veis.- Ap¢s selecionar um reino, s∆o apresentadas informaá‰es sobre os filos associados a esse reino.### Explorar Filos- Os usu†rios podem visualizar os filos associados a um determinado reino.- Cada filo Ç exibido com uma imagem representativa e um link para visualizar os subfilos associados.### Explorar Subfilos- Os usu†rios podem visualizar os subfilos associados a um determinado filo.- Cada subfilo Ç exibido com uma lista de espÇcies associadas.### Explorar EspÇcies- Os usu†rios podem visualizar as espÇcies associadas a um determinado subfilo.- Cada espÇcie Ç exibida com informaá‰es detalhadas, como nome cient°fico, habitat, comportamento, etc.##." 
+Bem-vindo ao prot√≥tipo 1.0 do Projeto Planeta Fauna! Este prot√≥tipo apresenta uma aplica√ß√£o inicial que permite explorar diferentes reinos da vida animal, visualizando filos, subfilos e esp√©cies associadas.
+
+## Escopo do Projeto
+
+O Projeto Planeta Fauna visa criar uma plataforma que forne√ßa informa√ß√µes detalhadas sobre as diversas formas de vida em nosso planeta, organizadas em uma hierarquia taxon√¥mica. O objetivo final √© criar uma ferramenta educacional e de pesquisa para estudantes, cientistas e entusiastas da vida selvagem.
+
+## Casos de Uso
+
+### Explorar Reinos
+- Os usu√°rios podem selecionar um reino da lista de reinos dispon√≠veis.
+- Ap√≥s selecionar um reino, s√£o apresentadas informa√ß√µes sobre os filos associados a esse reino.
+
+### Explorar Filos
+- Os usu√°rios podem visualizar os filos associados a um determinado reino.
+- Cada filo √© exibido com uma imagem representativa e um link para visualizar os subfilos associados.
+
+### Explorar Subfilos
+- Os usu√°rios podem visualizar os subfilos associados a um determinado filo.
+- Cada subfilo √© exibido com uma lista de esp√©cies associadas.
+
+### Explorar Esp√©cies
+- Os usu√°rios podem visualizar as esp√©cies associadas a um determinado subfilo.
+- Cada esp√©cie √© exibida com informa√ß√µes detalhadas, como nome cient√≠fico, habitat, comportamento, etc.
+
+## Utiliza√ß√£o do Prot√≥tipo
+
+Para executar o prot√≥tipo 1.0 do Projeto Planeta Fauna em sua m√°quina local, siga estas etapas:
