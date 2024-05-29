@@ -1,5 +1,29 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView
 from .models import Reino, Filo, Subfilo, Especie
+
+class SearchView(ListView):
+    template_name = 'search_results.html'
+    context_object_name = 'results'
+    
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = []
+        if query:
+            reinos = Reino.objects.filter(nome__icontains=query)
+            filos = Filo.objects.filter(nome__icontains=query)
+            subfilos = Subfilo.objects.filter(nome__icontains=query)
+            especies = Especie.objects.filter(nome__icontains=query)
+            
+            object_list = list(reinos) + list(filos) + list(subfilos) + list(especies)
+        return object_list
+
+class HomeView(TemplateView):
+    template_name = 'home.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['reinos'] = Reino.objects.all()
+        return context
 
 class ListaReinosView(ListView):
     model = Reino
