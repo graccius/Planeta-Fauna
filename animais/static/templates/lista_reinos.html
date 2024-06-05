@@ -3,15 +3,20 @@
 {% block title %}Lista de Reinos{% endblock %}
 
 {% block content %}
-<h1>Escolha um Reino</h1>
-<div class="reinos-lista">
-    {% for reino in reinos %}
-        <div class="reino-container">
-            <a href="{% url 'lista_filos' id_reino=reino.id %}" class="nome-reino">{{ reino.nome }}</a>
-            <a href="{% url 'lista_filos' id_reino=reino.id %}">
-                <img src="{{ reino.imagem.url }}" alt="{{ reino.nome }}">
-            </a>
+<div class="container">
+    <h1 class="mt-5 mb-4 text-center">Escolha um Reino</h1>
+    <div class="row">
+        {% for reino in reinos %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ reino.imagem.url }}" class="card-img-top" alt="{{ reino.nome }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ reino.nome }}</h5>
+                    <a href="{% url 'lista_filos' id_reino=reino.id %}" class="btn btn-primary btn-block">Ver Filos</a>
+                </div>
+            </div>
         </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

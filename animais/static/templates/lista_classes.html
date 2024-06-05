@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %}Filos do Reino - {{ reino.nome }}{% endblock %}
+{% block title %}{{ filo.nome }} do Reino {{ reino.nome }}{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <h2>Filos do Reino: {{ reino.nome }}</h2>
+    <h2>Classes do filo {{ filo.nome }}</h2>
     <div class="row">
-        {% for filo in filos %}
+        {% for classe in classes %}
         <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title">{{ filo.nome }}</h5>
-                    <a href="{% url 'lista_classes' id_filo=filo.id %}" class="btn btn-primary">Ver Classes</a>
+                    <a href="{% url 'lista_ordens' id_classe=classe.id %}" class="btn btn-primary">Ver Ordens</a>
                 </div>
             </div>
         </div>
