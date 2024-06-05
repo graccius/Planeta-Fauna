@@ -1,58 +1,18 @@
+/* styles.css */
+
 body {
-    font-family: Arial, sans-serif;
+    padding-top: 4.5rem; /* Mantém o padding-top original */
 }
 
-header {
-    background-color: #000000;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
+.jumbotron {
+    background-color: #f8f9fa;
+    padding: 2rem 1rem;
+    border-radius: 0.75rem; /* Adiciona bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem; /* Adiciona bordas arredondadas */
 }
-
-nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-h1 {
-    text-align: center;
-}
-
-h2{
-    text-align: center;
-    margin: 50px;
-}
-
-form {
-    text-align: center;
-    margin: 50px 0;
-}
-
-.reinos-lista {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.reino-container {
-    margin: 20px;
-    text-align: center;
-}
-
-.reino-container img {
-    max-width: 150px;
-    border: 1px solid #ffffff;
-    border-radius: 4px;
-    padding: 15px;
-}
-

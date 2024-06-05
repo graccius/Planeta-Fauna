@@ -1,22 +1,33 @@
-{% extends 'base.html' %}
+{% extends 'templates/base.html' %}
 
-{% block title %}Página Inicial{% endblock %}
+{% block title %}Home - Planeta Fauna{% endblock %}
 
 {% block content %}
-<h1>Bem-vindo ao Planeta Fauna</h1>
-<form method="get" action="{% url 'search' %}">
-    <input type="text" name="q" placeholder="Procure por reino, filo, subfilo ou espécie">
-    <button type="submit">Pesquisar</button>
-</form>
-<h2>Escolha um Reino</h2>
-<div class="reinos-lista">
+<div class="jumbotron py-4 text-center">
+    <h1 class="display-4">Bem-vindo ao Planeta Fauna!</h1>
+    <p class="lead">Explore os diferentes reinos da vida animal e descubra informações fascinantes sobre cada um deles.</p>
+    <hr class="my-4">
+    <form method="GET" action="{% url 'search' %}" class="form-inline justify-content-center my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search" name="q">
+        <button class="btn btn-outline-success btn-lg my-2 my-sm-0" type="submit">Pesquisar</button>
+    </form>
+</div>
+
+<h2 class="text-center">Escolha um Reino</h2>
+<div class="row justify-content-center">
     {% for reino in reinos %}
-        <div class="reino-container">
-            <a href="{% url 'lista_filos' id_reino=reino.id %}" class="nome-reino">{{ reino.nome }}</a>
-            <a href="{% url 'lista_filos' id_reino=reino.id %}">
-                <img src="{{ reino.imagem.url }}" alt="{{ reino.nome }}">
-            </a>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <img class="card-img-top img-fluid" src="{{ reino.imagem.url }}" alt="{{ reino.nome }}" style="height: 80px; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title text-center">{{ reino.nome }}</h5>
+                <p class="card-text text-center">{{ reino.descricao }}</p>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'lista_filos' id_reino=reino.id %}" class="btn btn-primary btn-block">Ver Filos</a>
+            </div>
         </div>
+    </div>
     {% endfor %}
 </div>
 {% endblock %}
