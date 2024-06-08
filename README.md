@@ -29,3 +29,36 @@ O Projeto Planeta Fauna visa criar uma plataforma que forneça informações det
 - A pesquisa é realizada em tempo real à medida que o usuário digita, sugerindo resultados correspondentes.
 - Ao selecionar um item da lista de resultados da pesquisa, o usuário é redirecionado para a página de detalhes desse item.
 - Se nenhum resultado correspondente for encontrado, uma mensagem informando que nenhum resultado foi encontrado é exibida ao usuário.
+
+
+## Configuração do Ambiente de Desenvolvimento
+# Para rodar a aplicação localmente, siga os passos abaixo:
+
+- 1. Clonar o Repositório
+bash
+Copiar código
+git clone https://github.com/seu-usuario/planeta-fauna.git
+cd planeta-fauna
+- 2. Criar e Ativar um Ambiente Virtual 
+    No Windows 
+        python -m venv venv
+        venv\Scripts\activate
+    No macOS/Linux
+        python3 -m venv venv
+        source venv/bin/activate
+- 3. Instalar Dependências
+    pip install -r requirements.txt
+- 4. Configurar Variáveis de Ambiente
+    Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis de ambiente:
+    SECRET_KEY=sua_chave_secreta
+    DEBUG=True
+- 5. Rodar Migrações do Banco de Dados
+    python manage.py migrate
+- 6. Iniciar o Servidor de Desenvolvimento
+    python manage.py runserver
+
+# Agora a aplicação deve estar rodando em http://localhost:8000.
+
+# Contribuições
+# Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
+
