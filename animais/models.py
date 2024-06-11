@@ -8,6 +8,11 @@ class BaseModel(models.Model):
         max_length=50
     )
     
+    descricao = models.CharField(
+        max_length=2555,
+        default=""
+    )
+    
     imagem = models.ImageField(upload_to='img/', null=True, blank=True)
 
     def __str__(self):
