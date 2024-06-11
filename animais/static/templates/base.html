@@ -8,18 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Planeta Fauna{% endblock %}</title>
     {% bootstrap_css %}
-    {% bootstrap_javascript %}
+    {% bootstrap_javascript jquery='full' %}
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light"> <!-- Barra de navegação leve -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="{% url 'home' %}">Planeta Fauna</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav navbar-left">
+                    <ul class="navbar-nav ml-left">
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'home' %}">Home</a>
                         </li>
@@ -35,7 +35,7 @@
     <main class="container mt-4">
         {% block content %}{% endblock %}
     </main>
-    <footer class="footer mt-auto py-3 bg-light"> <!-- Rodapé leve -->
+    <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
             <p class="text-muted text-center">&copy; 2024 Planeta Fauna</p>
         </div>
