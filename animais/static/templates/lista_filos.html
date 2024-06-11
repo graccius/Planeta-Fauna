@@ -1,10 +1,31 @@
 {% extends 'base.html' %}
 
-{% block title %}Lista de Reinos - Planeta Fauna{% endblock %}
+{% block title %}Lista de Filos - Planeta Fauna{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="mt-5 mb-4 text-center">Escolha um Filo</h1>
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <img src="{{ reino.imagem.url }}" class="img-fluid" alt="{{ reino.nome }}">
+        </div>
+        <div class="col-md-8">
+            <h2>{{ reino.nome }}</h2>
+            <div class="descricao">
+                <h3>Diversidade Infinita</h3>
+                <div class="descricao-resumo">
+                    <p>Uma das características mais surpreendentes do reino animal é a sua incrível diversidade. De habitats terrestres a aquáticos, de climas árticos a tropicais, os animais se adaptaram de maneiras surpreendentes para sobreviver e prosperar em uma variedade de ambientes.</p>
+                </div>
+                <div class="descricao-completa" style="display: none;">
+                    <p>Formas de Vida Espetaculares: Com formas de vida que variam desde os mais simples organismos unicelulares até os complexos vertebrados, o reino animal exibe uma incrível variedade de estruturas e funções. Desde as asas elegantes das aves até as escamas coloridas dos peixes tropicais, cada criatura possui adaptações únicas que a tornam admirável e especial.</p>
+                    <p>Comportamentos Intrigantes: Além de suas características físicas impressionantes, os animais também exibem uma variedade fascinante de comportamentos. Desde as complexas sociedades das formigas até as graciosas danças de acasalamento das aves do paraíso, os comportamentos animais são uma janela para a riqueza da vida emocional e social no reino animal.</p>
+                    <p>Importância Vital: O reino animal desempenha um papel crucial nos ecossistemas do nosso planeta. Desde polinizadores que sustentam nossas culturas agrícolas até predadores que regulam as populações de presas, os animais desempenham uma variedade de funções vitais que mantêm os ecossistemas saudáveis e equilibrados.</p>
+                    <p>Fonte de Inspiração e Maravilha: Além de seu papel ecológico essencial, o reino animal também é uma fonte inesgotável de inspiração e maravilha para os seres humanos. Desde tempos imemoriais, os animais têm inspirado mitos, lendas, arte e ciência, despertando nossa imaginação e curiosidade sobre o mundo natural.</p>
+                    <p>Em resumo, o Reino Animalia é uma cornucópia de vida incrível e surpreendente, cheia de beleza, diversidade e mistério. Explorar e compreender o reino animal é uma jornada emocionante que nos conecta mais profundamente com o mundo natural e nos enriquece como seres humanos.</p>
+                </div>
+                <button class="btn btn-link btn-toggle">Ver mais</button>
+            </div>
+        </div>
+    </div>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for filo in filos %}
         <div class="col">
@@ -21,4 +42,25 @@
         {% endfor %}
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const descricaoResumo = document.querySelector('.descricao-resumo');
+    const descricaoCompleta = document.querySelector('.descricao-completa');
+    const btnToggle = document.querySelector('.btn-toggle');
+    
+    btnToggle.addEventListener('click', function() {
+        if (descricaoResumo.style.display === 'none' || descricaoResumo.style.display === '') {
+            descricaoResumo.style.display = 'block';
+            descricaoCompleta.style.display = 'none';
+            btnToggle.textContent = 'Ver mais';
+        } else {
+            descricaoResumo.style.display = 'none';
+            descricaoCompleta.style.display = 'block';
+            btnToggle.textContent = 'Ver menos';
+        }
+    });
+});
+</script>
+
 {% endblock %}
