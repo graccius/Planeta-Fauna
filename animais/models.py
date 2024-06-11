@@ -9,7 +9,7 @@ class BaseModel(models.Model):
     )
     
     descricao = models.CharField(
-        max_length=255,
+        max_length=2555,
         default=""
     )
     

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'animais',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -125,7 +126,9 @@ STATIC_URL = 'static/'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'animais\static')]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'animais/static')
+    ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
