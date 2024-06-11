@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ filo.nome }} do Reino {{ reino.nome }}{% endblock %}
+{% block title %}Lista de Reinos - Planeta Fauna{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <h2>Classes do filo {{ filo.nome }}</h2>
-    <div class="row">
-        {% for classe in classes %}
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
+<div class="container">
+    <h1 class="mt-5 mb-4 text-center">Escolha um Filo</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for filo in filos %}
+        <div class="col">
+            <div class="card-custom">
+                <img src="{{ filo.imagem.url }}" class="card-img-top img-fluid" alt="{{ filo.nome }}">
                 <div class="card-body">
-                    <h5 class="card-title">{{ filo.nome }}</h5>
-                    <a href="{% url 'lista_ordens' id_classe=classe.id %}" class="btn btn-primary">Ver Ordens</a>
+                    <h5 class="card-title text-center">{{ filo.nome }}</h5>
+                    <div class="text-center">
+                        <a href="{% url 'lista_classes' id_filo=filo.id %}" class="btn btn-outline-dark btn-block">Ver Classes</a>
+                    </div>
                 </div>
             </div>
         </div>
