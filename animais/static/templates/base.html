@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Planeta Fauna{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
 </head>
@@ -19,21 +20,28 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-left">
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'lista_reinos' %}">Reinos</a>
                         </li>
-                        <!-- Adicione mais itens de navegação conforme necessário -->
                     </ul>
+                    <!-- Add search form here -->
+                    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search_results' %}">
+                        {% csrf_token %}
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search" name="q">
+                        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Pesquisar</button>
+                    </form>                    
+                    <!-- End of search form -->
                 </div>
             </div>
         </nav>
     </header>
     <main class="container mt-4">
-        {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
     </main>
     <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
