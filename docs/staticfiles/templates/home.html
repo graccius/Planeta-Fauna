@@ -1,0 +1,37 @@
+<!-- home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Home - Planeta Fauna{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card bg-primary text-white shadow-lg rounded-3 border-0" style="padding: 2rem 1rem; border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <div class="card-body">
+                    <h1 class="display-4 text-center mb-4">Bem-vindo ao Planeta Fauna!</h1>
+                    <p class="lead text-center">Explore os diferentes reinos da vida animal e descubra informações fascinantes sobre cada um deles.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="text-center mt-5">Escolha um Reino</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+        {% for reino in reinos %}
+        <div class="col">
+            <div class="card h-100 border-0 shadow" style="background-color: #ffc107; border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <img src="{{ reino.imagem.url }}" class="card-img-top img-fluid" alt="{{ reino.nome }}" style="border-radius: 0.5rem;">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ reino.nome }}</h5>
+                    <p class="card-text text-center">{{ reino.descricao }}</p>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <a href="{% url 'lista_filos' id_reino=reino.id %}" class="btn btn-outline-dark btn-block">Ver Filos</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
