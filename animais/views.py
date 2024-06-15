@@ -17,7 +17,7 @@ class SearchView(ListView):
             ordens = Classe.objects.filter(nome__icontains=query)
             especies = Especie.objects.filter(nome__icontains=query)
             
-            object_list = list(reinos) + list(filos) + list(subfilos) + list(especies)
+            object_list = list(reinos) + list(filos) + list(classes) + list(especies) + list(ordens)
         return object_list
 
 class HomeView(TemplateView):
