@@ -13,9 +13,9 @@
             {% if result|get_class_name == 'Reino' %}
                 <a href="{% url 'lista_filos' id_reino=result.id %}">Reino: {{ result.nome }}</a>
             {% elif result|get_class_name == 'Filo' %}
-                <a href="{% url 'lista_subfilos' id_filo=result.id %}">Filo: {{ result.nome }}</a>
-            {% elif result|get_class_name == 'Subfilo' %}
-                <a href="{% url 'lista_especies' id_subfilo=result.id %}">Subfilo: {{ result.nome }}</a>
+                <a href="{% url 'lista_classes' id_filo=result.id %}">Filo: {{ result.nome }}</a>
+            {% elif result|get_class_name == 'Classe' %}
+                <a href="{% url 'lista_ordens' id_classe=result.id %}">Classe: {{ result.nome }}</a>
             {% elif result|get_class_name == 'Especie' %}
                 Espécie: {{ result.nome }}
             {% endif %}
