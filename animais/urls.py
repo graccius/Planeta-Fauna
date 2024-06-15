@@ -6,7 +6,8 @@ from .views import (
     ListaOrdensView,
     ListaFamiliasView,
     ListaGenerosView,
-    ListaEspeciesView
+    ListaEspeciesView,
+    SearchView
 )
 
 urlpatterns = [
@@ -18,4 +19,5 @@ urlpatterns = [
     path('ordens/<int:id_ordem>/familias/', ListaFamiliasView.as_view(), name='lista_familias'),
     path('familias/<int:id_familia>/generos/', ListaGenerosView.as_view(), name='lista_generos'),
     path('generos/<int:id_genero>/especies/', ListaEspeciesView.as_view(), name='lista_especies'),
+    path('search/', SearchView.as_view(), name='search_results')
 ]
