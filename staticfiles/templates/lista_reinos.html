@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Reinos - Planeta Fauna{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5 mb-4 text-center">Escolha um Reino</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for reino in reinos %}
+        <div class="col">
+            <div class="card-custom">
+                <img src="{{ reino.imagem.url }}" class="card-img-top img-fluid" alt="{{ reino.nome }}">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ reino.nome }}</h5>
+                    <div class="text-center">
+                        <a href="{% url 'lista_filos' id_reino=reino.id %}" class="btn btn-outline-dark btn-block">Ver Filos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
