@@ -1,0 +1,64 @@
+{% load static %}
+{% load bootstrap4 %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Planeta Fauna{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    {% bootstrap_css %}
+</head>
+<body>
+    <header>
+        <!--NAV BAR-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <!-- LOGO // BRAND -->
+                <a class="navbar-brand" href="{% url 'home' %}">Planeta Fauna</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <!--BOTOES DO REINOS-->
+                        {% for reino in reinos %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ reino.id }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ reino.nome }}
+                            </a>
+                            <!--BOTOES DOS FILOS-->
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown{{ reino.id }}">
+                                {% for filo in reino.filos.all %}
+                                    <a class="dropdown-item" href="{% url 'lista_classes' id_filo=filo.id %}">{{ filo.nome }}</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <!-- Formulário de busca -->
+                    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search_results' %}">
+                        {% csrf_token %}
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search" name="q">
+                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Pesquisar</button>
+                    </form>
+                    <!-- Fim do formulário de busca -->
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <p class="text-muted text-center">&copy; 2024 Planeta Fauna</p>
+        </div>
+    </footer>
+
+    <!-- Scripts do Bootstrap -->
+    {% bootstrap_javascript jquery='full' %}
+</body>
+</html>

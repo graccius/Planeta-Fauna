@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Classes - Planeta Fauna{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5 mb-4 text-center">Escolha uma Classe</h1>
+    <p class="text-center">{{ filo.descricao }}</p>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for classe in classes %}
+        <div class="col">
+            <div class="card-custom">
+                <img src="{{ classe.imagem.url }}" class="card-img-top img-fluid" alt="{{ classe.nome }}">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ classe.nome }}</h5>
+                    <div class="text-center">
+                        <a href="{% url 'lista_ordens' id_classe=classe.id %}" class="btn btn-outline-dark btn-block">Ver Ordens</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
