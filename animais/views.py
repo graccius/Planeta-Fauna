@@ -1,112 +1,116 @@
-from django.views.generic import TemplateView, ListView, DetailView
+from rest_framework import viewsets, generics
+from rest_framework.response import Response
+from rest_framework import status
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import View, DetailView, TemplateView, ListView
 from .models import Reino, Filo, Classe, Ordem, Familia, Genero, Especie
-from .utils import get_class_name
+
+
+class HomePageView(TemplateView):
+    template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['reinos'] = Reino.objects.all()  # Adicione esta linha para passar os reinos para o template
+        return context
 
 
 class SearchView(ListView):
     template_name = 'search_results.html'
     context_object_name = 'results'
-    
+
     def get_queryset(self):
         query = self.request.GET.get('q')
-        object_list = []
         if query:
+            # Buscar em todos os modelos relevantes
             reinos = Reino.objects.filter(nome__icontains=query)
             filos = Filo.objects.filter(nome__icontains=query)
             classes = Classe.objects.filter(nome__icontains=query)
-            ordens = Classe.objects.filter(nome__icontains=query)
+            ordens = Ordem.objects.filter(nome__icontains=query)
+            familias = Familia.objects.filter(nome__icontains=query)
+            generos = Genero.objects.filter(nome__icontains=query)
             especies = Especie.objects.filter(nome__icontains=query)
-            
-            object_list = list(reinos) + list(filos) + list(classes) + list(especies) + list(ordens)
-        return object_list
 
-class HomeView(TemplateView):
-    template_name = 'home.html'
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['reinos'] = Reino.objects.all()
-        return context
+            # Agregar todos os resultados em uma lista
+            results = list(reinos) + list(filos) + list(classes) + \
+                      list(ordens) + list(familias) + list(generos) + \
+                      list(especies)
 
-class ListaReinosView(ListView):
-    model = Reino
-    template_name = 'lista_reinos.html'
-    context_object_name = 'reinos'
+            return results
 
-class ListaFilosView(ListView):
-    template_name = 'lista_filos.html'
-    context_object_name = 'filos'
-
-    def get_queryset(self):
-        reino_id = self.kwargs['id_reino']
-        return Filo.objects.filter(reino_id=reino_id)
+        # Retorna uma lista vazia se não houver consulta
+        return []
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['reino'] = Reino.objects.get(id=self.kwargs['id_reino'])
+        context['query'] = self.request.GET.get('q', '')
         return context
 
-class ListaClassesView(ListView):
-    template_name = 'lista_classes.html'
-    context_object_name = 'classes'
 
-    def get_queryset(self):
-        filo_id = self.kwargs['id_filo']
-        return Classe.objects.filter(filo_id=filo_id)
+## List Views ##
+class ListaFilosView(View):
+    def get(self, request, id_reino):
+        reino = get_object_or_404(Reino, id=id_reino)
+        filos = Filo.objects.filter(reino=reino)
+        context = {
+            'reino': reino,
+            'filos': filos
+        }
+        return render(request, 'lista_filos.html', context)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['filo'] = Filo.objects.get(id=self.kwargs['id_filo'])
-        return context
+class ListaClassesView(View):
+    def get(self, request, id_filo):
+        filo = get_object_or_404(Filo, id=id_filo)
+        classes = Classe.objects.filter(filo=filo)
+        context = {
+            'filo': filo,
+            'classes': classes
+        }
+        return render(request, 'lista_classes.html', context)
 
-class ListaOrdensView(ListView):
-    template_name = 'lista_ordens.html'
-    context_object_name = 'ordens'
+class ListaOrdensView(View):
+    def get(self, request, id_classe):
+        classe = get_object_or_404(Classe, id=id_classe)
+        ordens = Ordem.objects.filter(classe=classe)
+        context = {
+            'classe': classe,
+            'ordens': ordens
+        }
+        return render(request, 'lista_ordens.html', context)
 
-    def get_queryset(self):
-        classe_id = self.kwargs['id_classe']
-        return Ordem.objects.filter(classe_id=classe_id)
+class ListaFamiliasView(View):
+    def get(self, request, id_ordem):
+        ordem = get_object_or_404(Ordem, id=id_ordem)
+        familias = Familia.objects.filter(ordem=ordem)
+        context = {
+            'ordem': ordem,
+            'familias': familias
+        }
+        return render(request, 'lista_familias.html', context)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['classe'] = Classe.objects.get(id=self.kwargs['id_classe'])
-        return context
+class ListaGenerosView(View):
+    def get(self, request, id_familia):
+        familia = get_object_or_404(Familia, id=id_familia)
+        generos = Genero.objects.filter(familia=familia)
+        context = {
+            'familia': familia,
+            'generos': generos
+        }
+        return render(request, 'lista_generos.html', context)
 
-class ListaFamiliasView(ListView):
-    template_name = 'lista_familias.html'
-    context_object_name = 'familias'
+class ListaEspeciesView(View):
+    def get(self, request, id_genero):
+        genero = get_object_or_404(Genero, id=id_genero)
+        especies = Especie.objects.filter(genero=genero)
+        context = {
+            'genero': genero,
+            'especies': especies
+        }
+        return render(request, 'lista_especies.html', context)
 
-    def get_queryset(self):
-        ordem_id = self.kwargs['id_ordem']
-        return Familia.objects.filter(ordem_id=ordem_id)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['ordem'] = Ordem.objects.get(id=self.kwargs['id_ordem'])
-        return context
-
-class ListaGenerosView(ListView):
-    template_name = 'lista_generos.html'
-    context_object_name = 'generos'
-
-    def get_queryset(self):
-        familia_id = self.kwargs['id_familia']
-        return Genero.objects.filter(familia_id=familia_id)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['familia'] = Familia.objects.get(id=self.kwargs['id_familia'])
-        return context
-
-class ListaEspeciesView(ListView):
-    template_name = 'lista_especies.html'
+## DETAIL VIEW FOR ESPECIES ## 
+class DetalhesEspecieView(DetailView):
+    model = Especie
+    template_name = 'detalhes_especies.html'
     context_object_name = 'especies'
-
-    def get_queryset(self):
-        genero_id = self.kwargs['id_genero']
-        return Especie.objects.filter(genero_id=genero_id)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['genero'] = Genero.objects.get(id=self.kwargs['id_genero'])
-        return context

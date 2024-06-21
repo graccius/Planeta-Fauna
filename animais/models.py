@@ -41,3 +41,4 @@ class Genero(BaseModel):
 
 class Especie(BaseModel):
     genero = models.ForeignKey(Genero, on_delete=models.CASCADE, related_name='especies')
+
