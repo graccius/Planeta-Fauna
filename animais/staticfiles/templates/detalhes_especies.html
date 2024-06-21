@@ -1,0 +1,13 @@
+<!-- especies.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Detalhes de {{ especies.nome }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5 mb-4 text-center">{{ especies.nome }}</h1>
+    <p class="text-center">{{ especies.descricao }}</p>
+    <!-- Adicione outras informações da espécie aqui -->
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+<!-- register.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <!-- Adicione o link para o arquivo CSS do Bootstrap -->
+    {%load bootstrap4%}">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <!-- Card Bootstrap -->
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title text-center">Register Account</h1>
+                        <!-- Formulário de registro -->
+                        <form method="post">
+                            {% csrf_token %}
+                            <!-- Campo de nome de usuário -->
+                            <div class="form-group">
+                                <label for="id_username">Username:</label>
+                                <input type="text" class="form-control" id="id_username" name="username">
+                            </div>
+                            <!-- Campo de senha -->
+                            <div class="form-group">
+                                <label for="id_password1">Password:</label>
+                                <input type="password" class="form-control" id="id_password1" name="password1">
+                            </div>
+                            <!-- Campo de confirmação de senha -->
+                            <div class="form-group">
+                                <label for="id_password2">Password confirmation:</label>
+                                <input type="password" class="form-control" id="id_password2" name="password2">
+                            </div>
+                            <!-- Botão de envio -->
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
