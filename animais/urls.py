@@ -1,23 +1,25 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 from .views import (
-    ListaReinosView,
-    ListaFilosView,
+    HomePageView,
+    SearchView,
     ListaClassesView,
+    ListaFilosView,
     ListaOrdensView,
     ListaFamiliasView,
     ListaGenerosView,
     ListaEspeciesView,
-    SearchView
+    DetalhesEspecieView,
 )
 
 urlpatterns = [
-    path('', ListaReinosView.as_view(), name='home'),
-    path('reinos/', ListaReinosView.as_view(), name='lista_reinos'),
-    path('reinos/<int:id_reino>/filos/', ListaFilosView.as_view(), name='lista_filos'),
-    path('filos/<int:id_filo>/classes/', ListaClassesView.as_view(), name='lista_classes'),
-    path('classes/<int:id_classe>/ordens/', ListaOrdensView.as_view(), name='lista_ordens'),
-    path('ordens/<int:id_ordem>/familias/', ListaFamiliasView.as_view(), name='lista_familias'),
-    path('familias/<int:id_familia>/generos/', ListaGenerosView.as_view(), name='lista_generos'),
-    path('generos/<int:id_genero>/especies/', ListaEspeciesView.as_view(), name='lista_especies'),
-    path('search/', SearchView.as_view(), name='search_results')
+    path('', HomePageView.as_view(), name='home'),
+    path('search/', SearchView.as_view(), name='search_results'),
+    path('filos/<int:id_reino>/', ListaFilosView.as_view(), name='lista_filos'),  # Novo path
+    path('classes/<int:id_filo>/', ListaClassesView.as_view(), name='lista_classes'),
+    path('ordens/<int:id_classe>/', ListaOrdensView.as_view(), name='lista_ordens'),  # Novo path
+    path('familias/<int:id_ordem>/', ListaFamiliasView.as_view(), name='lista_familias'),  # Novo path
+    path('generos/<int:id_familia>/', ListaGenerosView.as_view(), name='lista_generos'),  # Novo path
+    path('especies/<int:id_genero>/', ListaEspeciesView.as_view(), name='lista_especies'),
+    path('details/<int:pk>/', DetalhesEspecieView.as_view(), name='detalhes_especies')
 ]
